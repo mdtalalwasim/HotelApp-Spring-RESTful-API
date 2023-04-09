@@ -7,5 +7,7 @@ import com.wasim.hotelapp.entity.Delivery;
 
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer>{
-
+	
+	//Derived Queries
+	Delivery findByDeliveryPartnerName(String deliveryPartnerName);
 }

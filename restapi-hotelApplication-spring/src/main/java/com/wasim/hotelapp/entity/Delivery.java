@@ -3,6 +3,7 @@ package com.wasim.hotelapp.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,7 @@ import lombok.Setter;
 public class Delivery {
 	
 	@Id
-	@GeneratedValue(generator = "deliv_id", strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "deliv_id", strategy = GenerationType.IDENTITY)
 	@SequenceGenerator(name="deliv_id", sequenceName = "delivery_id")
 	private Integer deliveryId;
 	
@@ -28,7 +29,7 @@ public class Delivery {
 	
 	private double deliveryCharges;
 	
-	@ManyToMany(mappedBy = "deliveryList")//Hotel is the owner of this ManyToMany Relation and "deliveryList" is the field of Hotel Class
+	@ManyToMany(mappedBy = "deliveryList", cascade=CascadeType.ALL)//Hotel is the owner of this ManyToMany Relation and "deliveryList" is the field of Hotel Class
 	private Set<Hotel> hotelList = new HashSet<>();
 	
 	public Delivery(String deliveryPartnerName, double deliveryCharges) {

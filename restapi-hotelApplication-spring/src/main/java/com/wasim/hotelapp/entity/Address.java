@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Address {
 	
 	@Id
-	@GeneratedValue(generator = "add_id", strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "add_id", strategy = GenerationType.IDENTITY)
 	@SequenceGenerator(name="add_id", sequenceName = "address_id")
 	private Integer addressId;
 	
